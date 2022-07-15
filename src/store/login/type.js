@@ -1,0 +1,5 @@
+export const USER_LOGIN_INIT = 'USER_LOGIN:INIT';
+export const USER_LOGIN_SUCCESS = 'USER_LOGIN:SUCCESS';
+export const USER_LOGIN_FAIL = 'USER_LOGIN:FAIL';
+export const USER_LOGOUT = 'USER:LOGOUT'
+export const REFRESH_TOKEN = 'REFRESH_TOKEN';
