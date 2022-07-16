@@ -16,23 +16,22 @@ const StoryCard = ({story}) => {
 
   const onClickVisit = () => window.open(story.url, '_blank', 'noopener,noreferrer');
 
-  console.log('rendered');
   return (
     <>
     <Box sx={{ minWidth: 275 }}>
       <Card variant="outlined">
         <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {story.section}
+          {story?.section}
         </Typography>
         <Typography variant="h5" component="div" onClick={() => setOpen(true)} className={classes.title}>
-          {story.title}
+          {story?.title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {story.byline}
+          {story?.byline}
         </Typography>
         <Typography variant="body2">
-          {story.abstract}
+          {story?.abstract}
         </Typography>
       </CardContent>
       <CardActions>
