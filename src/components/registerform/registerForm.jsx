@@ -42,10 +42,10 @@ const RegisterForm = ({ onClickSubmit, message, buttonTitle, title, handleChange
               autoComplete="email"
               autoFocus
               onChange={handleChange}
-              value={values.email || ''}
-              errors={errors.email || ''}
+              value={values?.email || ''}
+              errors={errors?.email || ''}
             />
-          {errors.email && (
+          {errors?.email && (
             <Typography
               component="h6"
               variant="h6"
@@ -64,7 +64,7 @@ const RegisterForm = ({ onClickSubmit, message, buttonTitle, title, handleChange
               id="password"
               autoComplete="current-password"
               onChange={handleChange}
-              value={values.password || ''}
+              value={values?.password || ''}
             />
             <Button
               type="submit"

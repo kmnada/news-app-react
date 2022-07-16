@@ -8,7 +8,7 @@ const StoryCards = ({ stories, isLoading }) => {
     
 return (
    <>
-    {isLoading ? <Loader /> : stories.map((story, index) => story?.title && <StoryCard key={`${index}-${story.url}`} story={story} />)}
+    {isLoading ? <Loader /> : stories?.map((story, index) => story?.title && <StoryCard key={`${index}-${story.url}`} story={story} />)}
 </>
 )}
 

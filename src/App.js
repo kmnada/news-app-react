@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from "react-router-dom";

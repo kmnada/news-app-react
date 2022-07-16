@@ -29,7 +29,7 @@ const DetailsModal = ({ isOpen, onClickClose, story }) => {
         <Box
             component="img"
             alt="news image"
-            src={story.multimedia[0]?.url}
+            src={story?.multimedia[0]?.url}
             className={classes.image}
       />
           <DialogContentText>

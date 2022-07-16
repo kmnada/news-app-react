@@ -5,7 +5,7 @@ import { useStyles } from './styles';
 const PaginationComponent = ({ count, handleChange, page }) => {
   const classes = useStyles();
   return (
-      <Pagination count={count} onChange={handleChange} page={page} classes={{ root: classes.root}} variant="outlined" color="secondary" />
+      <Pagination count={count} onChange={handleChange} page={page} classes={{ root: classes.root}} variant="outlined" color="text.secondary" />
   );
 };
 
