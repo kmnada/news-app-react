@@ -11,7 +11,6 @@ const Login = () => {
     const { loginSuccess } = useSelector((state) => state.loginReducer);
     
     const onSubmit = () => {
-        console.log(values);
         dispatch(loginSignUp({email: values.email,
         password: values.password}, 'LOGIN' ));
     };
@@ -21,7 +20,6 @@ const Login = () => {
 
     useEffect(() => {
     if(loginSuccess) {
-      debugger;
     history.push('/home');
   }
   }, [loginSuccess]);

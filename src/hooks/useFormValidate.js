@@ -10,8 +10,7 @@ const useFormValidate = (onSubmit) => {
         if(Object.keys(errors).length === 0 && submitClicked) {
             onSubmit();
         }
-        console.log('errors', errors);
-    }, [errors, submitClicked]);
+    }, [errors]);
     
     const handleSubmit = (event) => {
         if(event){

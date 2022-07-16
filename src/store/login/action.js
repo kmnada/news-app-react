@@ -1,4 +1,5 @@
 import Cookie from 'js-cookie';
+import { setStorageItem } from '../../utils/LocalStorageUtil';
 import { apiCall } from "../config/api";
 import { API_URL, BASE_URL } from "../config/constants";
 import { USER_LOGIN_FAIL, USER_LOGIN_INIT, USER_LOGIN_SUCCESS, USER_LOGOUT } from "./type";
@@ -17,7 +18,6 @@ export const loginSignUp = ({ email, password }, action) => {
     };
 
     return async (dispatch) => {
-        console.log('here');
         dispatch({
             type: USER_LOGIN_INIT,
           });
@@ -25,6 +25,7 @@ export const loginSignUp = ({ email, password }, action) => {
             const response = await apiCall(apiArgs);
             const { status, data } = response;
             if (status === 200 && data?.access_token) {  
+                setStorageItem('user', email);
                 dispatch({ type : USER_LOGIN_SUCCESS, payload: { accessToken: data?.access_token } })
             } else {
                 dispatch({ type: USER_LOGIN_FAIL })

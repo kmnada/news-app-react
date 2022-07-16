@@ -8,7 +8,8 @@ import Stories from '../stories';
 const routes = {
     0: '/home',
     1: '/world',
-    2: '/science'
+    2: '/science',
+    3: '/search'
 };
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
           <Tab label="Top News" value={0}/>
           <Tab label="World" value={1} />
           <Tab label="Science"  value={2} />
+          <Tab label="Search"  value={3} />
         </Tabs>
       </Box>
       <Stories />
