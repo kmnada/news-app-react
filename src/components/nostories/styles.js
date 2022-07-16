@@ -1,8 +1,8 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles(() => ({
-    heading: {
-        display: 'flex',
-        justifyContent: 'center'
-    }
+  heading: {
+    display: 'flex',
+    justifyContent: 'center'
+  }
 }));

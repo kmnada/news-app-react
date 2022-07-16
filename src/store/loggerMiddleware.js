@@ -1,6 +1,6 @@
-const LoggerMiddleware = (store) => (next) => (action) => {
-    console.log("action", action);
-    next(action);
-  };
+const LoggerMiddleware = () => (next) => (action) => {
+  console.log('action', action);
+  next(action);
+};
 
 export default LoggerMiddleware;

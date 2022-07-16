@@ -1,3 +1,3 @@
-import StoryCards from "./storyCards";
+import StoryCards from './storyCards';
 
 export default StoryCards;

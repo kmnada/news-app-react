@@ -1,3 +1,3 @@
-import StoryCard from "./storyCard";
+import StoryCard from './storyCard';
 
 export default StoryCard;

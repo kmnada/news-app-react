@@ -1,34 +1,41 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import useFormValidate from '../../hooks/useFormValidate';
 import { loginSignUp } from '../../store/login/action';
 import RegisterForm from '../registerform/registerForm';
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
-    const dispatch = useDispatch();
-    const history = useHistory();
-    const { loginSuccess } = useSelector((state) => state.loginReducer);
-    
-    const onSubmit = () => {
-        dispatch(loginSignUp({email: values.email,
-        password: values.password}, 'LOGIN' ));
-    };
-    
-    
-    const { values, errors , handleChange, handleSubmit} = useFormValidate(onSubmit);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { loginSuccess } = useSelector((state) => state.loginReducer);
 
-    useEffect(() => {
-    if(loginSuccess) {
-    history.push('/home');
-  }
+  const onSubmit = () => {
+    dispatch(loginSignUp({ email: values.email, password: values.password }, 'LOGIN'));
+  };
+
+  const { values, errors, handleChange, handleSubmit } = useFormValidate(onSubmit);
+
+  useEffect(() => {
+    if (loginSuccess) {
+      history.push('/home');
+    }
   }, [loginSuccess]);
 
-    const onClickSignUp = () => history.push('/signup');
+  const onClickSignUp = () => history.push('/signup');
 
   return (
-      <RegisterForm message="Don't have an account? Sign Up" title='Sign In' buttonTitle='Sign In' onClickSubmit={handleSubmit} handleChange={handleChange} errors={errors} values={values} onClick={onClickSignUp} />
+    <RegisterForm
+      message="Don't have an account? Sign Up"
+      title="Sign In"
+      buttonTitle="Sign In"
+      onClickSubmit={handleSubmit}
+      handleChange={handleChange}
+      errors={errors}
+      values={values}
+      onClick={onClickSignUp}
+    />
   );
-}
+};
 
 export default Login;

@@ -1,3 +1,3 @@
-import NoStories from "./noStories";
+import NoStories from './noStories';
 
 export default NoStories;

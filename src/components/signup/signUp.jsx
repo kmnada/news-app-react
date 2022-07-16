@@ -10,32 +10,31 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const { loginSuccess } = useSelector((state) => state.loginReducer);
   const onSubmit = () => {
-    dispatch(loginSignUp({email: values.email,
-      password: values.password}, 'SIGNUP' ));
+    dispatch(loginSignUp({ email: values.email, password: values.password }, 'SIGNUP'));
   };
 
   useEffect(() => {
-    if(loginSuccess) {
-    history.push('/home');
-  }
+    if (loginSuccess) {
+      history.push('/home');
+    }
   }, [loginSuccess]);
 
-  const { values, errors , handleChange, handleSubmit} = useFormValidate(onSubmit);
+  const { values, errors, handleChange, handleSubmit } = useFormValidate(onSubmit);
 
   const onClickSignIn = () => history.push('/login');
 
   return (
-      <RegisterForm
-        onClick={onClickSignIn}
-        message="Already have an account? Sign in"
-        title='Sign Up'
-        buttonTitle='Sign Up'
-        onClickSubmit={handleSubmit}
-        handleChange={handleChange}
-        errors={errors}
-        values={values}
-      />
+    <RegisterForm
+      onClick={onClickSignIn}
+      message="Already have an account? Sign in"
+      title="Sign Up"
+      buttonTitle="Sign Up"
+      onClickSubmit={handleSubmit}
+      handleChange={handleChange}
+      errors={errors}
+      values={values}
+    />
   );
-}
+};
 
 export default SignUp;
