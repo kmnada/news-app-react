@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
+import HomeIcon from "@material-ui/icons/Home";
 import { useStyles } from "../header/styles";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/login/action";
@@ -27,11 +27,10 @@ const Header = () => {
                 className={classes.menuButton}
                 color="inherit"
                 aria-label="menu"
-                onClick={() => history.push("/search")}
+                onClick={() => history.push("/home")}
               >
-                <SearchIcon />
+                <HomeIcon />
               </IconButton>
-              {/* <img src={logo} alt="Kitty Katty!" className={classes.logo} /> */}
               <Typography variant="h6" className={classes.title}>
                 New York Times
               </Typography>

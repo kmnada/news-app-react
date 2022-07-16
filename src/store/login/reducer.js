@@ -1,4 +1,5 @@
 import Cookie from 'js-cookie';
+import { removeStorageItem } from '../../utils/LocalStorageUtil';
 import { API_KEY } from '../config/constants';
 
 import { USER_LOGIN_FAIL, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_LOGIN_INIT, REFRESH_TOKEN } from './type';
@@ -26,6 +27,8 @@ const loginReducer = (state=initialState, action) => {
             return { ...state, loginSuccess: true}
         case USER_LOGOUT:{
             Cookie.remove("access_token");
+            Cookie.remove("api_key");
+            removeStorageItem("user");
             return { ...state, loginSuccess: false }
         }
         default:

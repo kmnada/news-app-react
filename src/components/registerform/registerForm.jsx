@@ -1,18 +1,18 @@
-import * as React from 'react';
+import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from "@material-ui/core/Container";
+import { useStyles } from './styles';
 
 const RegisterForm = ({ onClickSubmit, message, buttonTitle, title, handleChange, values, errors, onClick }) => {
+  const classes = useStyles();
 
   return (
       <Container component="main" maxWidth="xs">
@@ -45,6 +45,15 @@ const RegisterForm = ({ onClickSubmit, message, buttonTitle, title, handleChange
               value={values.email || ''}
               errors={errors.email || ''}
             />
+          {errors.email && (
+            <Typography
+              component="h6"
+              variant="h6"
+              className={classes.error}
+            >
+              * {errors.email}
+            </Typography>
+          )}
             <TextField
               margin="normal"
               required
@@ -57,20 +66,17 @@ const RegisterForm = ({ onClickSubmit, message, buttonTitle, title, handleChange
               onChange={handleChange}
               value={values.password || ''}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
+              className={classes.button}
               sx={{ mt: 3, mb: 2 }}
             >
               {buttonTitle}
             </Button>
             <Grid container>
-              <Grid item>
+              <Grid item className={classes.message}>
                 <Link onClick={onClick} variant="body2">
                   {message}
                 </Link>

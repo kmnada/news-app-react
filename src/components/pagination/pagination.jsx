@@ -1,12 +1,11 @@
 import React from 'react';
-import Pagination from '@material-ui/core/Pagination';
-import Stack from '@material-ui/core/Stack';
+import Pagination from '@material-ui/lab/Pagination';
+import { useStyles } from './styles';
 
-const PaginationComponent = () => {
+const PaginationComponent = ({ count, handleChange, page }) => {
+  const classes = useStyles();
   return (
-    <Stack spacing={2}>
-      <Pagination count={10} />
-    </Stack>
+      <Pagination count={count} onChange={handleChange} page={page} classes={{ root: classes.root}} variant="outlined" color="secondary" />
   );
 };
 

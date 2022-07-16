@@ -11,12 +11,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         {...rest}
         render={(props) =>
         CheckUserLoggedIn !== null ? (
-            // <React.Suspense fallback={"...loading"}>
-            <>
+            <React.Suspense fallback={"...loading"}>
                 <Header/>
                 <Component {...props} />
-            </>
-            // </React.Suspense>
+            </React.Suspense>
 
         ): (
             <Redirect
