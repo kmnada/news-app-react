@@ -1,6 +1,7 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import NoStories from '../nostories';
+import CloseIcon from '@material-ui/icons/Close';
 import { useStyles } from './styles';
 
 const Comments = ({ isOpen, onClickClose }) => {
@@ -12,6 +13,7 @@ const Comments = ({ isOpen, onClickClose }) => {
         onClose={onClickClose}
         aria-labelledby="responsive-dialog-title"
         classes={{ paper: classes.root }}>
+        <CloseIcon className={classes.icon} onClick={onClickClose} cursor="pointer" />
         <NoStories message={'No comments yet...'} />
       </Dialog>
     </div>
