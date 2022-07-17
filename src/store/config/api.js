@@ -34,5 +34,6 @@ axios.interceptors.request.use(
   },
   (error) => {
     Promise.reject(error);
+    history.pushState('/login');
   }
 );
