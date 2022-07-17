@@ -19,7 +19,6 @@ export const apiCall = async (apiArgs) => {
 // Add a request interceptor
 axios.interceptors.request.use(
   (config) => {
-    console.log('config', config);
     // if token is undefined, that means the cookie has expired.ie. refreshToken has to be called.
     const token = Cookie.get('api_key');
     config.headers['Content-Type'] = 'application/json';

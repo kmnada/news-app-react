@@ -24,7 +24,7 @@ const StoryCard = ({ story }) => {
           minWidth: 275
         }}>
         <Card variant="outlined">
-          <CardContent>
+          <CardContent className={classes.title} onClick={() => setOpen(true)}>
             <Typography
               sx={{ fontSize: 14 }}
               color="textSecondary"
@@ -32,11 +32,7 @@ const StoryCard = ({ story }) => {
               className={classes.label}>
               {story?.section}
             </Typography>
-            <Typography
-              variant="h5"
-              component="div"
-              onClick={() => setOpen(true)}
-              className={classes.title}>
+            <Typography variant="h5" component="div" onClick={() => setOpen(true)}>
               {story?.title}
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="textSecondary">
