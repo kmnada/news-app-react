@@ -22,6 +22,7 @@ const Search = () => {
   const [page, setPage] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchWord, setSearchWord] = useState('');
+  const [searchCalled, setSearchCalled] = useState(false);
   const fieldRef = useRef(null);
   const { isLoading, totalPages, stories } = useSelector((state) => state.storiesReducer);
   const PER_PAGE = 10;
@@ -30,11 +31,8 @@ const Search = () => {
   const _DATA = usePagination(stories, PER_PAGE);
 
   const handleClick = (event) => {
+    event.persist();
     setAnchorEl(event.currentTarget);
-    setTimeout(() => {
-      console.log('function called');
-      fieldRef.current.focus();
-    }, 100);
   };
 
   const handleClose = () => {
@@ -46,6 +44,9 @@ const Search = () => {
   const recentSearches = getRecentSearches();
 
   const onClickSearch = (event) => {
+    if (!searchCalled) {
+      setSearchCalled(true);
+    }
     event.stopPropagation();
     setPage(0);
     if (searchWord.trim()) {
@@ -57,14 +58,20 @@ const Search = () => {
     setSearchWord(event.target.value);
   };
 
-  const handleChange = (_event, page) => {
-    setPage(page);
-    _DATA.jump(page);
-    dispatch(searchArticles(searchWord, page - 1));
+  const handleChange = (_event, newPage) => {
+    if (newPage !== page) {
+      setPage(newPage);
+      _DATA.jump(newPage);
+      dispatch(searchArticles(searchWord, newPage - 1));
+    }
   };
 
   const onClickItem = (word) => {
     setAnchorEl(null);
+    setSearchWord(word);
+    if (!searchCalled) {
+      setSearchCalled(true);
+    }
     setPage(0);
     dispatch(searchArticles(word));
   };
@@ -81,6 +88,7 @@ const Search = () => {
           onClick={handleClick}
           onChange={(event) => handleOnChange(event)}
           value={searchWord}
+          autoFocus={true}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -110,6 +118,8 @@ const Search = () => {
               vertical: 'bottom',
               horizontal: 'left'
             }}
+            disableAutoFocus={true}
+            disableEnforceFocus={true}
             classes={{ paper: classes.popover }}>
             {recentSearches.map((option) => (
               <MenuItem
@@ -122,7 +132,7 @@ const Search = () => {
         )}
       </Box>
       {stories.length > 0 && <Pagination count={count} handleChange={handleChange} page={page} />}
-      {!isLoading && stories.length === 0 ? (
+      {!isLoading && stories.length === 0 && searchCalled ? (
         <NoStories message={'No Stories Here'} />
       ) : (
         <StoryCards stories={stories} isLoading={isLoading} />
