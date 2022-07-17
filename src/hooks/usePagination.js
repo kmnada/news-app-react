@@ -1,5 +1,11 @@
 import { useState } from 'react';
 
+/**
+ * It takes an array of data and the number of items per page, and returns an object with functions to
+ * navigate through the data
+ * @param data - The data you want to paginate.
+ * @param itemsPerPage - The number of items to display per page.
+ */
 const usePagination = (data, itemsPerPage) => {
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(data.length / itemsPerPage);

@@ -1,3 +1,8 @@
+/**
+ * Function to validate email
+ * @param values - An object containing all the values of the form.
+ * @returns An object with the key of email and the value of the error message.
+ */
 export default function validate(values) {
   let errors = {};
   if (!values.email) {

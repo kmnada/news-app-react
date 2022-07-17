@@ -7,6 +7,11 @@ import { store } from './store/store';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+/**
+ * The App function
+ * @returns The Provider component is being returned.
+ */
+
 const App = () => {
   return (
     <Provider store={store}>

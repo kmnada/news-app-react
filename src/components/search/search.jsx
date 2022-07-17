@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -22,6 +22,7 @@ const Search = () => {
   const [page, setPage] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchWord, setSearchWord] = useState('');
+  const fieldRef = useRef(null);
   const { isLoading, totalPages, stories } = useSelector((state) => state.storiesReducer);
   const PER_PAGE = 10;
 
@@ -30,6 +31,10 @@ const Search = () => {
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    setTimeout(() => {
+      console.log('function called');
+      fieldRef.current.focus();
+    }, 100);
   };
 
   const handleClose = () => {
@@ -59,6 +64,7 @@ const Search = () => {
   };
 
   const onClickItem = (word) => {
+    setAnchorEl(null);
     setPage(0);
     dispatch(searchArticles(word));
   };
@@ -67,6 +73,7 @@ const Search = () => {
     <>
       <Box component="form" noValidate autoComplete="off" className={classes.box}>
         <TextField
+          inputRef={fieldRef}
           id="outlined-basic"
           label="Search"
           variant="outlined"
@@ -76,7 +83,7 @@ const Search = () => {
           value={searchWord}
           InputProps={{
             endAdornment: (
-              <InputAdornment>
+              <InputAdornment position="end">
                 {!!searchWord.length && (
                   <IconButton
                     onClick={(event) => {
@@ -106,8 +113,7 @@ const Search = () => {
             classes={{ paper: classes.popover }}>
             {recentSearches.map((option) => (
               <MenuItem
-                key={option.value}
-                value={option.value}
+                key={`${option.value}-${option.label}`}
                 onClick={() => onClickItem(option.label)}>
                 {option.label}
               </MenuItem>

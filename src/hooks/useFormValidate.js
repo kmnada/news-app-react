@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import validate from '../utils/FormValidationRules';
 
+/**
+ * It returns an object with a handleChange function, a handleSubmit function, a values object, and an
+ * errors object
+ * @param onSubmit - This is the function that will be called when the form is submitted.
+ */
 const useFormValidate = (onSubmit) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});

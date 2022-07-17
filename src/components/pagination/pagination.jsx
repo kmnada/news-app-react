@@ -11,7 +11,7 @@ const PaginationComponent = ({ count, handleChange, page }) => {
       page={page}
       classes={{ root: classes.root }}
       variant="outlined"
-      color="text.secondary"
+      color="secondary"
     />
   );
 };

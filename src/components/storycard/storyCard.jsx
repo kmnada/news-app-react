@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
@@ -26,7 +27,7 @@ const StoryCard = ({ story }) => {
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
-              color="text.secondary"
+              color="textSecondary"
               gutterBottom
               className={classes.label}>
               {story?.section}
@@ -38,7 +39,7 @@ const StoryCard = ({ story }) => {
               className={classes.title}>
               {story?.title}
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            <Typography sx={{ mb: 1.5 }} color="textSecondary">
               {story?.byline}
             </Typography>
             <Typography variant="body2">{story?.abstract}</Typography>

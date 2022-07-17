@@ -14,6 +14,7 @@ export const initialState = {
   loginSuccess: false
 };
 
+/* A reducer function that takes in the state and action as parameters. */
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_LOGIN_INIT:

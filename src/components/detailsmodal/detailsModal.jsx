@@ -29,11 +29,11 @@ const DetailsModal = ({ isOpen, onClickClose, story }) => {
           <CloseIcon className={classes.icon} onClick={onClickClose} cursor="pointer" />
         </Box>
         <DialogContent>
-          {story?.multimedia[0]?.url && !isSearch && (
+          {story?.multimedia?.[0]?.url && !isSearch && (
             <Box
               component="img"
               alt="news image"
-              src={story?.multimedia[0]?.url}
+              src={story?.multimedia?.[0]?.url}
               className={classes.image}
             />
           )}
