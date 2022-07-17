@@ -18,10 +18,17 @@ const StoryCard = ({ story }) => {
 
   return (
     <>
-      <Box sx={{ minWidth: 275 }}>
+      <Box
+        sx={{
+          minWidth: 275
+        }}>
         <Card variant="outlined">
           <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            <Typography
+              sx={{ fontSize: 14 }}
+              color="text.secondary"
+              gutterBottom
+              className={classes.label}>
               {story?.section}
             </Typography>
             <Typography

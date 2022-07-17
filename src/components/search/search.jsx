@@ -58,6 +58,11 @@ const Search = () => {
     dispatch(searchArticles(searchWord, page - 1));
   };
 
+  const onClickItem = (word) => {
+    setPage(0);
+    dispatch(searchArticles(word));
+  };
+
   return (
     <>
       <Box component="form" noValidate autoComplete="off" className={classes.box}>
@@ -100,7 +105,10 @@ const Search = () => {
             }}
             classes={{ paper: classes.popover }}>
             {recentSearches.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
+              <MenuItem
+                key={option.value}
+                value={option.value}
+                onClick={() => onClickItem(option.label)}>
                 {option.label}
               </MenuItem>
             ))}
