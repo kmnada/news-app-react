@@ -14,6 +14,7 @@ const Header = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const isSearch = history?.location?.pathname.split('/')[1] === 'search';
   const onClickLogout = () => {
     logout(history, dispatch);
   };
@@ -22,14 +23,16 @@ const Header = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            onClick={() => history.push('/home')}>
-            <HomeIcon />
-          </IconButton>
+          {isSearch && (
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+              onClick={() => history.push('/home')}>
+              <HomeIcon />
+            </IconButton>
+          )}
           <Typography variant="h6" className={classes.title}>
             New York Times
           </Typography>
