@@ -4,11 +4,13 @@ import Header from '../header';
 import { store } from '../../../store/store';
 import { Provider } from 'react-redux';
 
-test('should render Header component', () => {
-  const wrapper = shallow(
-    <Provider store={store}>
-      <Header />
-    </Provider>
-  );
-  expect(wrapper).toMatchSnapshot();
+describe(' Header component', () => {
+  it('renders default component', () => {
+    const wrapper = shallow(
+      <Provider store={store}>
+        <Header />
+      </Provider>
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
 });
