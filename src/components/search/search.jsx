@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchArticles } from '../../store/stories/action';
 import StoryCards from '../storycards';
 import Pagination from '../pagination';
-import usePagination from '../../hooks/usePagination';
 import { getRecentSearches } from '../../utils/HandleSearchValues';
 import NoStories from '../nostories';
 import Tabs from '../tabs';
@@ -20,16 +19,14 @@ import Tabs from '../tabs';
 const Search = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchWord, setSearchWord] = useState('');
   const [searchCalled, setSearchCalled] = useState(false);
   const fieldRef = useRef(null);
   const { isLoading, totalPages, stories } = useSelector((state) => state.storiesReducer);
-  const PER_PAGE = 10;
 
   const count = Math.min(totalPages, 200);
-  const _DATA = usePagination(stories, PER_PAGE);
 
   const handleClick = (event) => {
     event.persist();
@@ -49,7 +46,7 @@ const Search = () => {
       setSearchCalled(true);
     }
     event.stopPropagation();
-    setPage(0);
+    setPage(1);
     if (searchWord.trim()) {
       dispatch(searchArticles(searchWord));
     }
@@ -62,7 +59,6 @@ const Search = () => {
   const handleChange = (_event, newPage) => {
     if (newPage !== page) {
       setPage(newPage);
-      _DATA.jump(newPage);
       dispatch(searchArticles(searchWord, newPage - 1));
     }
   };

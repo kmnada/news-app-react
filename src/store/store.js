@@ -3,6 +3,8 @@ import rootReducer from './rootReducer';
 import thunkMiddleware from 'redux-thunk';
 import LoggerMiddleware from './loggerMiddleware';
 
+// removing authmiddleware, since it is not being used
+// const middlewares = [AuthMiddleware, LoggerMiddleware, thunkMiddleware];
 const middlewares = [LoggerMiddleware, thunkMiddleware];
 
 /*

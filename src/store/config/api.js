@@ -1,6 +1,8 @@
 import axios from 'axios';
-import Cookie from 'js-cookie';
 import { toast } from 'react-toastify';
+import { getCookie } from '../../utils/CookieUtil';
+import { USER_LOGIN_FAIL, USER_LOGIN_SUCCESS } from '../login/type';
+import { BASE_URL } from './constants';
 
 /**
  * It takes an object with a url, method, and body, and returns a response object.
@@ -16,11 +18,42 @@ export const apiCall = async (apiArgs) => {
   }
 };
 
+/**
+ * Function to refresh the bearer token
+ * It's a function that takes in a dispatch function as an argument, and returns a boolean value
+ * @param dispatch - the dispatch function from the redux store
+ * @returns A boolean value.
+ */
+export const refreshToken = async (dispatch) => {
+  // supposed to be refreshtoken url, ie. /auth/refreshtoken
+  const url = `${BASE_URL['BASE']}/auth/login`;
+  const requestData = { email: 'nilson8@email.com', password: 'nilson' };
+  const apiArgs = {
+    method: 'POST',
+    url,
+    data: requestData
+  };
+  try {
+    const response = await apiCall(apiArgs);
+    const { status, data } = response;
+    if (status === 200 && data?.access_token) {
+      dispatch({ type: USER_LOGIN_SUCCESS, payload: { accessToken: data?.access_token } });
+      return true;
+    } else {
+      dispatch({ type: USER_LOGIN_FAIL });
+      return false;
+    }
+  } catch (error) {
+    dispatch({ USER_LOGIN_FAIL });
+    return false;
+  }
+};
+
 // Add a request interceptor
 axios.interceptors.request.use(
   (config) => {
     // if token is undefined, that means the cookie has expired.ie. refreshToken has to be called.
-    const token = Cookie.get('api_key');
+    const token = getCookie('api_key');
     config.headers['Content-Type'] = 'application/json';
     // bearer token not working, instead using api key
     //   if (token) {

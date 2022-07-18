@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Header from '../header';
 import { store } from '../../../store/store';
 import { Provider } from 'react-redux';
@@ -12,5 +12,12 @@ describe(' Header component', () => {
       </Provider>
     );
     expect(wrapper).toMatchSnapshot();
+  });
+  it('mounts component', () => {
+    mount(
+      <Provider store={store}>
+        <Header />
+      </Provider>
+    );
   });
 });

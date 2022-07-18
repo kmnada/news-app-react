@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Login from '../login';
 import { Provider } from 'react-redux';
 import { store } from '../../../store/store';
@@ -12,5 +12,12 @@ describe(' Login component', () => {
       </Provider>
     );
     expect(wrapper).toMatchSnapshot();
+  });
+  it('mounts component', () => {
+    mount(
+      <Provider store={store}>
+        <Login />
+      </Provider>
+    );
   });
 });
