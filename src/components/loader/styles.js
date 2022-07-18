@@ -10,6 +10,6 @@ export const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'rgba(0, 0, 0, 0.7)'
+    background: 'rgba(0, 0, 0, 0.3)'
   }
 }));

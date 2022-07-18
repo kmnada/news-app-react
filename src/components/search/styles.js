@@ -7,7 +7,8 @@ export const useStyles = makeStyles(() => ({
   box: {
     display: 'flex',
     justifyContent: 'center',
-    margin: 25
+    margin: 25,
+    marginTop: 70
   },
   popover: {
     '&.MuiPopover-paper': {

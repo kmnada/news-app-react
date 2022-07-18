@@ -15,6 +15,7 @@ import Pagination from '../pagination';
 import usePagination from '../../hooks/usePagination';
 import { getRecentSearches } from '../../utils/HandleSearchValues';
 import NoStories from '../nostories';
+import Tabs from '../tabs';
 
 const Search = () => {
   const classes = useStyles();
@@ -78,6 +79,7 @@ const Search = () => {
 
   return (
     <>
+      <Tabs />
       <Box component="form" noValidate autoComplete="off" className={classes.box}>
         <TextField
           inputRef={fieldRef}

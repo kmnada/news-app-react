@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
